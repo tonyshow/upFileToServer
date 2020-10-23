@@ -1,0 +1,36 @@
+<!--public/result.html-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>上传成功</title>
+</head>
+
+<body>
+    <h1>上传成功</h1>
+    <form action="/docom" method="post" enctype="multipart/form-data">
+        <input type="text" readonly="true" id="fileName" name="fileName">
+        <input type="submit" value="开始压缩" />
+    </form>
+    <a href="/index.html">重新上传</a>
+    <script>
+        function getUrlParams(params) {
+            var urlObj = {};
+            if (!window.location.search) {
+                return false;
+            }
+            var urlParams = window.location.search.substring(1);
+            var urlArr = urlParams.split('&');
+            for (var i = 0; i < urlArr.length; i++) {
+                var urlArrItem = urlArr[i].split('=');
+                urlObj[urlArrItem[0]] = urlArrItem[1]
+            }　　 // 判断是否有参数
+            if (arguments.length >= 1) {
+                return urlObj[params]
+            }
+            return urlObj;
+        }
+        document.getElementById("fileName").value = getUrlParams("fileName");
+    </script>
+</body>

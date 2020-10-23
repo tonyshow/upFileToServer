@@ -1,0 +1,26 @@
+{
+  "name": "upFileToServer",
+  "version": "1.0.0",
+  "description": "上传文件到服务器",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonyshow/upFileToServer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonyshow/upFileToServer/issues"
+  },
+  "homepage": "https://github.com/tonyshow/upFileToServer#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "formidable": "^1.2.2",
+    "images": "^3.2.3",
+    "multer": "^1.4.2"
+  }
+}

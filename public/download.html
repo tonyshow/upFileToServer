@@ -1,0 +1,49 @@
+<!--public/result.html-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>压缩工作完成</title>
+</head>
+
+<body>
+    <h1>压缩工作完成</h1>
+    <p id="comResult" value="1234"></p>
+    <p id="downloadurl" value="1234">12</p>
+
+    <button onclick="doClick()">点击下载图片</button>
+    <a href="/index.html">继续解压</a>
+    <script>
+        function getUrlParams(params) {
+            var urlObj = {};
+            if (!window.location.search) {
+                return false;
+            }
+            var urlParams = window.location.search.substring(1);
+            var urlArr = urlParams.split('&');
+            for (var i = 0; i < urlArr.length; i++) {
+                var urlArrItem = urlArr[i].split('=');
+                urlObj[urlArrItem[0]] = urlArrItem[1]
+            }　　 // 判断是否有参数
+            if (arguments.length >= 1) {
+                return urlObj[params]
+            }
+            return urlObj;
+        }
+
+        let bfsize = Number(getUrlParams("bfsize")) / 1024;
+        let afsize = Number(getUrlParams("afsize")) / 1024;
+        document.getElementById("downloadurl").innerText = `压缩结果:\n压缩前:${bfsize}kb\n压缩后:${afsize}kb\n` + "\n\n下载地址:" + getUrlParams("downloadurl");
+
+        if (afsize >= bfsize) {
+            document.getElementById("comResult").innerHTML = `<span style='color: red;'>优化失败:${bfsize-afsize}kb</span>`;
+        } else {
+            document.getElementById("comResult").innerHTML = `<span style='color: green;'>优化很成功:${bfsize-afsize}kb (${ Math.floor((bfsize-afsize)/bfsize*100) }%)</span>`;
+        }
+
+        function doClick() {
+            window.open(getUrlParams("downloadurl"));
+        }
+    </script>
+</body>
